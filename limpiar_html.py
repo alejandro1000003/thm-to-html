@@ -1,4 +1,5 @@
-import re
+import re # regex
+import argparse # Para manejar argumentos
 
 def clean_html(html_content):
     # Eliminar las etiquetas <script> y su contenido
@@ -27,11 +28,7 @@ def clean_html(html_content):
     html_content = re.sub(r'<footer.*?</footer>', '', html_content, flags=re.DOTALL)
     # Eliminar iframes
     html_content = re.sub(r'<iframe.*?></iframe>', '', html_content, flags=re.DOTALL)
-
     # {Titles of the room}
-    # Añade un espacio despues del numero
-    # html_content = re.sub(r'Task\ ([0-9]+)', r'\1', html_content)  # Solo selecciona el número
-    # Convertir a negrita títulos
     html_content = re.sub(r'(Task\ (\d+))(\w*)', r'\3', html_content) # No necesita dotall
    
     return html_content
@@ -45,8 +42,18 @@ def process_html_file(input_file, output_file):
     with open(output_file, 'w', encoding='utf-8') as file:
         file.write(cleaned_content)
 
-# Ejemplo de uso
-input_file = 'TryHackMe _ Cyber Kill Chain.html'
-output_file = 'output.html'
-process_html_file(input_file, output_file)
+def main():
+    # Configurar el parser de argumentos
+    parser = argparse.ArgumentParser(description='Procesar un archivo HTML.')
+    parser.add_argument('input_file', type=str, help='El archivo HTML de entrada')
+
+    # Parsear los argumentos
+    args = parser.parse_args()
+
+    # Llamar a la función con los argumentos proporcionados
+    print('Resultado generado en result.html')
+    process_html_file(args.input_file, 'result.html')
+
+if __name__ == '__main__':
+    main()
 
