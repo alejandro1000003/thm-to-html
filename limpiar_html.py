@@ -27,6 +27,13 @@ def clean_html(html_content):
     html_content = re.sub(r'<footer.*?</footer>', '', html_content, flags=re.DOTALL)
     # Eliminar iframes
     html_content = re.sub(r'<iframe.*?></iframe>', '', html_content, flags=re.DOTALL)
+
+    # {Titles of the room}
+    # Añade un espacio despues del numero
+    # html_content = re.sub(r'Task\ ([0-9]+)', r'\1', html_content)  # Solo selecciona el número
+    # Convertir a negrita títulos
+    html_content = re.sub(r'(Task\ (\d+))(\w*)', r'\3', html_content) # No necesita dotall
+   
     return html_content
 
 def process_html_file(input_file, output_file):
