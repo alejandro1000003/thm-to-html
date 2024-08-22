@@ -1,3 +1,6 @@
+## Propósito
+Estudio de los regex avanzado y automatización de apuntes de tryhackme
+
 # Documentación 
 Necesitarás las librerías
 
