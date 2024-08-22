@@ -8,6 +8,14 @@ Necesitarás las librerías
 pip install beautifulsoup4 lxml
 ```
 
+Ejecución del script;
+
+1. Descarga la página completa de thm
+2. Ejecuta:
+```sh
+python3 limpiar_html.py nombre_html
+```
+
 ## ¿Que hace el programa? 
 
 *Primero necesitaremos entender que . en regex de python no considera saltos de línea por lo tanto pondremos el parámetro DOTALL para que el punto también sean saltos de línea. 
